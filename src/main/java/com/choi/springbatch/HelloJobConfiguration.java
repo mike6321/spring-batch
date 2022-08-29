@@ -19,7 +19,7 @@ public class HelloJobConfiguration {
     private final StepBuilderFactory stepBuilderFactory;
 
 
-    @Bean
+//    @Bean
     public Job helloJob() {
         return jobBuilderFactory.get("helloJob")
                 .start(helloStep01())
@@ -27,7 +27,7 @@ public class HelloJobConfiguration {
                 .build();
     }
 
-    @Bean
+//    @Bean
     public Step helloStep01() {
         return stepBuilderFactory.get("helloStep01")
                 .tasklet((contribution, chunkContext) -> {
@@ -39,7 +39,7 @@ public class HelloJobConfiguration {
                 .build();
     }
 
-    @Bean
+//    @Bean
     public Step helloStep02() {
         return stepBuilderFactory.get("helloStep02")
                 .tasklet((contribution, chunkContext) -> {
