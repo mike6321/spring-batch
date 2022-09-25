@@ -9,3 +9,4 @@ Spring Batch 스터디를 위한 repository 입니다.
 ## Program arguments
 
 * -chunkSize=20 --job.name=chunkProcessingJob
+* --job.name=itemReaderJob
