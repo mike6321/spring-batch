@@ -24,10 +24,8 @@ import org.springframework.core.io.FileSystemResource;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
+import static com.choi.springbatch.part3.CreateItemUtils.nonIdItem;
 
 @Configuration
 @Slf4j
@@ -43,9 +41,9 @@ public class ItemWriterConfiguration {
     public Job itemWriterJob() throws Exception {
         return this.jobBuilderFactory.get("itemWriterJob")
                 .incrementer(new RunIdIncrementer())
-                .start(this.csvItemWriterStep())
+//                .start(this.csvItemWriterStep())
 //                .next(this.jdbcBatchItemWriterStep())
-                .next(this.jpaBatchItemWriterStep())
+                .start(this.jpaBatchItemWriterStep())
                 .build();
     }
 
@@ -79,7 +77,7 @@ public class ItemWriterConfiguration {
     private ItemWriter<? super Person> jpaBatchItemWriter() throws Exception {
         JpaItemWriter<Person> jpaItemWriter = new JpaItemWriterBuilder<Person>()
                 .entityManagerFactory(entityManagerFactory)
-                .usePersist(true)
+//                .usePersist(true)
                 .build();
         jpaItemWriter.afterPropertiesSet();
         return jpaItemWriter;
@@ -116,19 +114,7 @@ public class ItemWriterConfiguration {
     }
 
     private ItemReader<Person> itemReader() {
-        return new CustomItemReader<>(getItems());
-    }
-
-    private List<Person> getItems() {
-//        List<Person> items = new ArrayList<>();
-//        for (int i = 0; i < 100; i++) {
-//            items.add(new Person("test name" + i, "test age", "test address"));
-//        }
-//        return items;
-
-        return IntStream.range(0, 100)
-                .mapToObj(index -> new Person( "test name" + index, "test age", "test address"))
-                .collect(Collectors.toList());
+        return new CustomItemReader<>(nonIdItem(100));
     }
 
 }
