@@ -10,3 +10,5 @@ Spring Batch 스터디를 위한 repository 입니다.
 
 * -chunkSize=20 --job.name=chunkProcessingJob
 * --job.name=itemReaderJob
+* --job.name=savePersonJob
+* -allow_duplicate=false --job.name=savePersonJob
