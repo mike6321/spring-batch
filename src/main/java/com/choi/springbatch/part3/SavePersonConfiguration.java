@@ -64,6 +64,8 @@ public class SavePersonConfiguration {
     }
 
     private ItemProcessor<? super Person, ? extends Person> itemProcessor(String allowDuplicate) throws Exception {
+        // name 기준으로 중복제거
+        // -> 이로인하여 UNKNOWN 변경 시 4개의 row 생성 된다.
         DuplicateValidationProcessor<Person> duplicateValidationProcessor = new DuplicateValidationProcessor<>(Person::getName, Boolean.parseBoolean(allowDuplicate));
         ItemProcessor<Person, Person> validationProcessor = item -> {
             if (item.isNotEmptyName()) {
@@ -73,7 +75,7 @@ public class SavePersonConfiguration {
         };
 
         CompositeItemProcessor<Person, Person> itemProcessor = new CompositeItemProcessorBuilder<Person, Person>()
-                .delegates(validationProcessor, duplicateValidationProcessor)
+                .delegates(new PersonValidationRetryProcessor(), validationProcessor, duplicateValidationProcessor)
                 .build();
         itemProcessor.afterPropertiesSet();
         return itemProcessor;
