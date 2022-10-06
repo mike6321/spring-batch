@@ -1,4 +1,4 @@
-package com.choi.springbatch.part3;
+package com.choi.springbatch;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.test.JobLauncherTestUtils;

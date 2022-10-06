@@ -27,7 +27,6 @@ public class SaveUserTasklet implements Tasklet {
     private List<User> createUsers() {
         List<User> users = new ArrayList<>();
         createUser(users, 0, 100, 1_000);
-        createUser(users, 0, 100, 1_000);
         createUser(users, 100, 200, 200_000);
         createUser(users, 200, 300, 300_000);
         createUser(users, 300, 400, 500_000);
