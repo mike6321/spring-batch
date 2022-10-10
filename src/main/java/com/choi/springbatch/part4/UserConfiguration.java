@@ -1,5 +1,6 @@
 package com.choi.springbatch.part4;
 
+import com.choi.springbatch.part5.JobParametersDecide;
 import com.choi.springbatch.part5.OrderStatistics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,8 +54,11 @@ public class UserConfiguration {
                 .incrementer(new RunIdIncrementer())
                 .start(this.saveUserStep())
                 .next(this.userLevelUpStep())
-                .next(this.orderStatisticsStep(null))
                 .listener(new LevelUpExecutionListener(userRepository))
+                .next(new JobParametersDecide("date"))
+                .on(JobParametersDecide.CONTINUE.getName())
+                .to(this.orderStatisticsStep(null))
+                .build()
                 .build();
     }
 

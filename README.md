@@ -14,3 +14,4 @@ Spring Batch 스터디를 위한 repository 입니다.
 * -allow_duplicate=false --job.name=savePersonJob
 * --job.name=userJob
 * -date=2022-10 --job.name=userJob
+* --job.name=userJob
