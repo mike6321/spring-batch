@@ -22,15 +22,9 @@ Spring Batch 스터디를 위한 repository 입니다.
 |                           | 1 time     | 2 time     | 3 time     |
 | ------------------------- | ---------- | ---------- | ---------- |
 | Simple Step               | 60069milis | 60777milis | 65522milis |
-| Async Step                |            |            |            |
+| Async Step                | 64493milis | 59089milis | 60021milis |
 | Multi-Thread Step         |            |            |            |
 | Partition Step            |            |            |            |
 | Async + Partition Step    |            |            |            |
 | Parallel Step             |            |            |            |
 | Partition + Parallel Step |            |            |            |
-
-```sql
-delete from orders where 1=1;
-delete from users where 1=1;
-delete from person where 1=1;
-```
