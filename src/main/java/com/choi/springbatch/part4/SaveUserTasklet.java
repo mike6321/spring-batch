@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 public class SaveUserTasklet implements Tasklet {
 
     private final UserRepository userRepository;
-    private static final int SIZE = 100;
+    private static final int SIZE = 10_000;
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -43,7 +43,7 @@ public class SaveUserTasklet implements Tasklet {
                                 .orders(Collections.singletonList(
                                         Orders.builder()
                                                 .amount(amount)
-                                                .createdDate(LocalDate.of(2022, 10 , dayOfMonth))
+                                                .createdDate(LocalDate.of(2022, 11 , dayOfMonth))
                                                 .itemName("item" + index)
                                                 .build()))
                                 .username("test username " + index)
