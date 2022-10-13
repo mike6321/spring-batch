@@ -18,6 +18,7 @@ Spring Batch 스터디를 위한 repository 입니다.
 * -date=2022-11 --job.name=userJob
 * -date=2022-11 --job.name=asyncUserJob
 * -date=2022-11 --job.name=multiThreadUserJob
+* -date=2022-11 --job.name=partitionUserJob
 
 ## Optimize
 
@@ -26,7 +27,7 @@ Spring Batch 스터디를 위한 repository 입니다.
 | Simple Step               | 60069milis | 60777milis | 65522milis |
 | Async Step                | 64493milis | 59089milis | 60021milis |
 | Multi-Thread Step         | 37461milis | 36840milis | 43474milis |
-| Partition Step            |            |            |            |
-| Async + Partition Step    |            |            |            |
+| Partition Step            | 48104milis | 42328milis | 42126milis |
+| Async + Partition Step    | 42979milis | 41694milis | 41428milis |
 | Parallel Step             |            |            |            |
 | Partition + Parallel Step |            |            |            |
