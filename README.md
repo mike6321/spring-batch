@@ -20,6 +20,11 @@ Spring Batch 스터디를 위한 repository 입니다.
 * -date=2022-11 --job.name=multiThreadUserJob
 * -date=2022-11 --job.name=partitionUserJob
 * -date=2022-11 --job.name=parallelUserJob
+*  mvn clean package -Dmaven.test.skip=true
+
+## Command
+
+*  java -jar spring-batch-0.0.1-SNAPSHOT.jar --job.name=userJob -date=2022-11 -path=/Users/nhn/IdeaProjects/repository/spring-batch/output/
 
 ## Optimize
 
